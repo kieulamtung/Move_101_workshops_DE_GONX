@@ -108,8 +108,7 @@ For each module (1-5):
 
 Complete all 5 modules to earn:
 - ✅ Certificate of Completion
-- ✅ NFT Badge on Sui
-- ✅ Featured in Hall of Fame
+- ✅ Stamp on Sui
 - ✅ Potential token rewards
 
 ## 📁 What You'll Build
