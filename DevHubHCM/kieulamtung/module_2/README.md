@@ -13,14 +13,14 @@
 - **Token Name**: GOODBOY COIN
 - **Token Symbol**: GDB
 - **Decimals**: 8
-- **Package ID**: `0x97707ad15d5d755142c8800cddf59a0569ad37e6e4474e5ad0d9bc1b6808a11b`
-- **TreasuryCap ID**: `0x381455b33655755f21295e7c901dd948341fa78027130dd56ac6f05aab39cc89`
+- **Package ID**: `0x2bd0ef8b2211af0213666fa731562764c118eedc33bc101fbb347f131586f67e`
+- **TreasuryCap ID**: `0x4854e8da8d029a8ef55047bf5dda5e0e046f239025735010bc5e7e09e3670d24`
 
 ## 🔗 Transactions
 
-- **Deploy TX**: https://testnet.suivision.xyz/txblock/DvJqJBmTrSE9o2z6XMuqmPh4zuizDzDEQECn4vVQiBTB
-- **Mint TX**: 
-- **Coin**: 0x97707ad15d5d755142c8800cddf59a0569ad37e6e4474e5ad0d9bc1b6808a11b::goodboy_coin::GOODBOY_COIN
+- **Deploy TX**: https://suiscan.xyz/testnet/object/0x2bd0ef8b2211af0213666fa731562764c118eedc33bc101fbb347f131586f67e/tx-blocks
+- **Mint TX**: https://suiscan.xyz/testnet/tx/6m5stVHf1K8MvY5ELFvbyx6ZPzoYzehAzjyYZ7GN7izi
+- **Coin**: 0x2bd0ef8b2211af0213666fa731562764c118eedc33bc101fbb347f131586f67e::goodboy_coin::GOODBOY_COIN
 
 ## 📂 Files
 

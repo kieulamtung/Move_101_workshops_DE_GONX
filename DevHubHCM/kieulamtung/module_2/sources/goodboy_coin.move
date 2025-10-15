@@ -1,47 +1,33 @@
 module module_2::goodboy_coin;
 
-use sui::coin::{Self, TreasuryCap, Coin};
+use sui::coin::{Self, TreasuryCap};
+use sui::transfer;
+use sui::tx_context;
+use sui::url::{Self, new_unsafe_from_bytes};
 
-/// One-Time Witness for the coin type.
+//One Time witness
 public struct GOODBOY_COIN has drop {}
 
-/// Called once on publish to create the currency.
-/// NOTE: `init` MUST NOT be public.
-fun init(witness: GOODBOY_COIN, ctx: &mut sui::tx_context::TxContext) {
-    let icon = std::option::some(sui::url::new_unsafe_from_bytes(
-        b"https://imgbox.com/7aR9IPLD",
-    ));
-
-    // create_currency(witness, decimals, symbol, name, description, icon_url, ctx)
-    let (treasury, metadata) = coin::create_currency<GOODBOY_COIN>(
-        witness,                                         // witness
-        8u8,                                             // decimals: u8  ✅
-        b"GDB",                                          // symbol: vector<u8>
-        b"Goodboy Coin",                                 // name: vector<u8>
-        b"Goodboy coin is a Standard Unregulated Coin",  // description: vector<u8>
-        icon,                                            // Option<Url>
-        ctx,                                             // &mut TxContext
+fun init(witness: GOODBOY_COIN, ctx: &mut TxContext) {
+    let (treasury_cap, coin_metadata) = coin::create_currency(
+        witness,
+        9,
+        b"GDB",
+        b"GoodBoy",
+        b"I like It",
+        option::some(
+            url::new_unsafe_from_bytes(
+                b"https://scontent.fsgn24-1.fna.fbcdn.net/v/t39.30808-6/494992055_122153443514515579_8543661755464771928_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGJBouiQvCmls0h40JJAyJBo6iYxDBtHtajqJjEMG0e1lkfrxhtqUx6HXIKLuu24wkWZs106HwlBS1GPr-R6oNv&_nc_ohc=vETHcLQPZpUQ7kNvwH0sl8r&_nc_oc=AdlLUoyCw4RaV8jeWKu9OBvyvYAarfFXId9T5mccN0eRnxo3Hvwe-wC7Tv2LVPi9yzs&_nc_zt=23&_nc_ht=scontent.fsgn24-1.fna&_nc_gid=Imk_r0-pZxzVY_FRGsbyiQ&oh=00_AffJ53-4Yd8vMwFYjou3i1qUbePIqHKC1efE0HtDt63pOA&oe=68F5812E",
+            ),
+        ),
+        ctx,
     );
 
-    sui::transfer::public_transfer(treasury, ctx.sender());
-    sui::transfer::public_transfer(metadata, ctx.sender());
+    transfer::public_freeze_object(coin_metadata);
+    transfer::public_transfer(treasury_cap, ctx.sender());
 }
 
-/// Mint a new coin with the given amount.
-public fun mint(
-    treasury: &mut TreasuryCap<GOODBOY_COIN>,
-    amount: u64,
-    ctx: &mut sui::tx_context::TxContext,
-): Coin<GOODBOY_COIN> {
-    coin::mint(treasury, amount, ctx)
-}
-
-/// Burn a coin and return the burned amount.
-public fun burn(treasury: &mut TreasuryCap<GOODBOY_COIN>, coin: Coin<GOODBOY_COIN>): u64 {
-    coin::burn(treasury, coin)
-}
-
-#[test_only]
-public fun init_for_test(ctx: &mut sui::tx_context::TxContext) {
-    init(GOODBOY_COIN {}, ctx);
+entry fun mint_token(treasury_cap: &mut TreasuryCap<GOODBOY_COIN>, ctx: &mut TxContext) {
+    let coin_object = coin::mint(treasury_cap, 1_000_000_000_000_000, ctx);
+    transfer::public_transfer(coin_object, ctx.sender())
 }
