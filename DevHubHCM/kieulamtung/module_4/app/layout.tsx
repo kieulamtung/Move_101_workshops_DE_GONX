@@ -3,34 +3,30 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
-import { Toaster } from "sonner";
 import "./globals.css";
 import Header from "@/components/header";
 import { Suspense } from "react";
-import { Providers } from "./providers";
+import ClientProviders from "@/components/client-providers"; // ✅ quan trọng
 
 export const metadata: Metadata = {
-  title: "Move_101",
-  description: "Created with DevHubHCM",
-  generator: "DEX.app",
+  title: "v0 App",
+  description: "Created with v0",
+  generator: "v0.app",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Providers>
+        <ClientProviders> {/* ✅ Bọc ở đây */}
           <Suspense fallback={<div>Loading...</div>}>
             <Header />
           </Suspense>
           {children}
           <Analytics />
-          <Toaster theme="dark" />
-        </Providers>
+        </ClientProviders>
       </body>
     </html>
   );
