@@ -21,7 +21,7 @@
 - **Package ID B**: `0x02b43ef806d02e68dcf32e9c5e1acc59ae82a4f812822a5910cc7d66181bfb0e`
 - **Package ID**: `0x02b43ef806d02e68dcf32e9c5e1acc59ae82a4f812822a5910cc7d66181bfb0e`
 - **Pool ID**: `0x7e0c522e0a3e7dc55f9f8673a620ef5ab48ffbc45b11270ebf4d4709538e7316`
-- **Exchange Rate**: 1 BOY = 1 GIRL
+- **Exchange Rate**: 1 BOY = 2 GIRL
 
 ## 🔗 Transactions
 
